@@ -3,7 +3,7 @@
  * Author:		Annie Wu
  * Class:		CS 241 - Data Structures and Algorithms II
  * 
- * Assignment:	Program 4
+ * Assignment:		Program 4
  * Date:		16 March 2018
  * 
  * Purpose:		This program contains the user interaction and implements Dijkstra's algorithm.
@@ -21,11 +21,11 @@ public class Program4 {
 	
 	private static String prompt = "\nCommand? ";
 	private static String commands = " Q Query the city information by entering the city code" +
-										"\n D Find the minimum distance between two cities" +
-										"\n I Insert a road by entering two city codes and distance" +
-										"\n R Remove an existing road by entering two city codes" +
-										"\n H Display this message" +
-										"\n E Exit";
+					"\n D Find the minimum distance between two cities" +
+					"\n I Insert a road by entering two city codes and distance" +
+					"\n R Remove an existing road by entering two city codes" +
+					"\n H Display this message" +
+					"\n E Exit";
 	private static String invalidInput = "Invalid input!";
 	private static String exiting = "Thank you for using my program!";
 	
