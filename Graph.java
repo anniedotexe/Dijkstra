@@ -3,7 +3,7 @@
  * Author:		Annie Wu
  * Class:		CS 241 - Data Structures and Algorithms II
  * 
- * Assignment:	Program 4
+ * Assignment:		Program 4
  * Date:		9 March 2018
  * 
  * Purpose:		This program contains the any functions regarding the graph of cities and roads.
