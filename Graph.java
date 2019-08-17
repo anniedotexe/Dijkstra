@@ -19,8 +19,7 @@ public class Graph {
 	private ArrayList<City> cities;
 	
 	/**
-	 * This is the default constructor.
-	 * The purpose is to create a new array list for the cities;
+	 * This function will create a new array list for the cities;
 	 */
 	public Graph() {
 		cities = new ArrayList<City>();
@@ -28,26 +27,30 @@ public class Graph {
 	
 	
 	/**
-	 * This is the function addCity.
-	 * The purpose is to add a city to the array list of cities.
+	 * This function will add a city to the array list of cities.
+	 * @param city a city
 	 */
 	public void addCity(City city) {
 		cities.add(city);
 	}
 	
 	/**
-	 * This is the function insertRoad.
-	 * The purpose is to insert a road between two cities with a given distance.
+	 * This function will insert a road between two cities with a given distance.
+	 * @param start starting city
+	 * @param end ending city
+	 * @param distance distance between the cities
 	 */
 	public void insertRoad(int start, int end, int distance) {
 		graph[start][end] = distance;
 	}
 	
 	/**
-	 * This is the function removeRoad.
-	 * The purpose is to remove a road between two cities, if it exists.
+	 * This function will remove a road between two cities, if it exists.
 	 * It will return false if the road already does not exist.
 	 * Else it will remove the road and return true.
+	 * @param start starting city
+	 * @param end ending city
+	 * @return false if road does not exist, else remove road and return true
 	 */
 	public boolean removeRoad(int start, int end) {
 		if(graph[start][end] == 0) {
@@ -60,24 +63,17 @@ public class Graph {
 	}
 	
 	/**
-	 * This is the function getCities.
-	 * The purpose is to get the array list of cities.
+	 * This function will get the array list of cities.
+	 * @return arraylist of cities
 	 */
 	public ArrayList<City> getCities() {
 		return cities;
 	}
-	
+
 	/**
-	 * This is the function getCityWithNumber.
-	 * The purpose is to get the city from the array list with a given city number.
-	 */
-	public City getCityWithNumber(int cityNumber) {
-		return cities.get(cityNumber);
-	}
-	
-	/**
-	 * This is the function getNumberWithCode.
-	 * The purpose is to get the city number with a given city code.
+	 * This function will get the city number with a given city code.
+	 * @param code city code
+	 * @return city number or -1 if it does not exist
 	 */
 	public int getNumberWithCode(String code) {
 		for(int i = 0; i < cities.size(); i++) {
@@ -89,8 +85,9 @@ public class Graph {
 	}
 	
 	/**
-	 * This is the function getNameWithCode.
-	 * The purpose is to get the city name with a given city code.
+	 * This function will get the city name with a given city code.
+	 * @param cityCode city code
+	 * @return city name or null if it does not exist
 	 */
 	public String getNameWithCode(String cityCode) {
 		for(int i = 0; i < cities.size(); i++) 		{
@@ -102,8 +99,9 @@ public class Graph {
 	}
 	
 	/**
-	 * This is the function getNameWithNumber.
-	 * The purpose is to get the city name with a given city number.
+	 * This function will get the city name with a given city number.
+	 * @param number city number
+	 * @return city name or null if it does not exist
 	 */
 	public String getNameWithNumber(int number)	{
 		for(int i = 0; i < cities.size(); i++) {
@@ -117,16 +115,9 @@ public class Graph {
 	/**
 	 * This is the function getGraph.
 	 * The purpose is to get the graph of roads and cities.
+	 * @return graph of roads and cities
 	 */
 	public int[][] getGraph() {
 		return graph;
-	}
-	
-	/**
-	 * This is the function getDistance.
-	 * The purpose is to get the distance between two cities.
-	 */
-	public int getDistance(int start, int end) {
-		return graph[start][end];
 	}
 }

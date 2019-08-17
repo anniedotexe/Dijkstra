@@ -14,20 +14,21 @@ import java.io.*;
 import java.util.*;
 
 public class Program4 {
-	
-	private static String cityFile = "C:\\Users\\annie\\Desktop\\CS 241\\city.dat";
-	private static String roadFile = "C:\\Users\\annie\\Desktop\\CS 241\\road.dat";
+
+	private static String cityFile = "city.dat";
+	private static String roadFile = "road.dat";
 	private static String fileNotFound = "The file could not be found.";
 	
 	private static String prompt = "\nCommand? ";
-	private static String commands = " Q Query the city information by entering the city code" +
-					"\n D Find the minimum distance between two cities" +
-					"\n I Insert a road by entering two city codes and distance" +
-					"\n R Remove an existing road by entering two city codes" +
-					"\n H Display this message" +
-					"\n E Exit";
+	private static String commands = "\n=============================================================================" +
+									"\n Q Query the city information by entering the city code" +
+									"\n D Find the minimum distance between two cities" +
+									"\n I Insert a road by entering two city codes and distance" +
+									"\n R Remove an existing road by entering two city codes" +
+									"\n H Display this message" +
+									"\n E Exit";
 	private static String invalidInput = "Invalid input!";
-	private static String exiting = "Thank you for using my program!";
+	private static String exiting = "\nExiting the program!";
 	
 	private static String comma = ", ";
 	private static String cityCode = "City code: ";
@@ -68,6 +69,7 @@ public class Program4 {
 		boolean exit = false;
 		
 		while (!exit) {
+			System.out.print(commands);
 			System.out.print(prompt);
 			input = sc.next();
 			input = input.toUpperCase();
@@ -140,7 +142,7 @@ public class Program4 {
 					break;
 				//exit
 				case "E":
-					System.out.print(exiting);
+					System.out.println(exiting);
 					exit = true;
 					break;
 				default:
@@ -151,19 +153,28 @@ public class Program4 {
 		sc.close();
 	}
 
+	/**
+	 * This function will search for a city inputted by the user.
+	 * @param input input from user
+	 */
 	private static void query(String input) {
-		for(int i = 0; i< graph.getCities().size(); i++){
-			if(graph.getCities().get(i).getCode().equalsIgnoreCase(input)){
+		for (int i = 0; i< graph.getCities().size(); i++) {
+			if (graph.getCities().get(i).getCode().equalsIgnoreCase(input)) {
 				System.out.print(graph.getCities().get(i).cityInfo());
 				break;
 			}
-			else if (i == graph.getCities().size()-1){
+			else if (i == graph.getCities().size()-1) {
 				System.out.printf(cityDoesNotExist, input);
 				break;
 			}
 		}
 	}
-	
+
+	/**
+	 * This function is the dijkstra algorithm.
+	 * @param startCode starting city code
+	 * @param endCode ending city code
+	 */
 	private static void dijkstra(String startCode, String endCode) {
 		int source = graph.getNumberWithCode(startCode) -1;
 		int target = graph.getNumberWithCode(endCode) -1;
@@ -242,8 +253,10 @@ public class Program4 {
 	}
 		
 	/**
-	 * This is the function insert.
-	 * The purpose is to insert a road between two cities with the given distance.
+	 * This function will insert a road between two cities with the given distance.
+	 * @param startCode starting city code
+	 * @param endCode ending city code
+	 * @param distance distance between cities
 	 */
 	private static void insert(String startCode, String endCode, int distance) {
 		int source = graph.getNumberWithCode(startCode) -1;
@@ -277,8 +290,9 @@ public class Program4 {
 	}
 	
 	/**
-	 * This is the function remove.
-	 * The purpose is to remove a road between two cities if it exists.
+	 * This function will remove a road between two cities if it exists.
+	 * @param startCode starting city code
+	 * @param endCode ending city code
 	 */
 	private static void remove(String startCode, String endCode) {
 		int source = graph.getNumberWithCode(startCode) -1;
@@ -307,12 +321,13 @@ public class Program4 {
 			System.out.printf(roadRemoved, graph.getCities().get(source).getName(),
 					graph.getCities().get(target).getName());
 		}
-		
 	}
 	
 	/**
 	 * This is the function getNeighbors.
 	 * The purpose is to get the neighbors of a vertex.
+	 * @param vertex current vertex
+	 * @return array of neighbors
 	 */
 	public static int[] getNeighbors(int vertex) {
 		int counter = 0;
@@ -334,6 +349,9 @@ public class Program4 {
 	/**
 	 * This is the function minWeight.
 	 * The purpose is to get the index of the vertex that has the smallest weight.
+	 * @param distance distance between cities
+	 * @param visited has this city been visisted
+	 * @return minimum weight
 	 */
 	public static int minWeight(int[] distance, boolean[] visited) {
 		//the current smallest distance/weight is set to infinity
@@ -356,6 +374,9 @@ public class Program4 {
 	/**
 	 * This is the function loadFromFile.
 	 * The purpose is to load the city and road data from their respective resource files.
+	 * @param cityData city data file name
+	 * @param roadData road data file name
+	 * @throws IOException
 	 */
 	private static void loadFromFile(String cityData, String roadData) throws IOException {
 		graph = new Graph();
